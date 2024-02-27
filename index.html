@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #display, #display1 {
+            width: 40%;
+            border: 3px solid blue;
+            border-radius: 10px;
+            height: 100px;
+            margin: auto;
+            overflow: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo">Manejo de Arrays</h1>
+    <button onclick="diceAlineacion()">Alimeacion</button>
+    <button onclick="imprimeAlineacion()">Imprimir La Alineacion</button>
+    <button onclick="cambioImagen()">imagen</button>
+    <button onclick="Multiplicar()">Tabla de un Numero</button>
+    <img id="imagen" src="" alt="" width="100%" height="100%">
+    <div id="display"></div>
+    <h1>Tabla Multiplicar</h1>
+    Tipo <input type="number" id="tipo" value="8" max="10" min="0">
+    <button onclick="Multiplicar()">Hacer</button>
+    <div id="display1"></div>
+
+    <script>
+
+        let alineacion = ["Messi", "Cristiano", "Zidane", "Figo", "Butragueño"]
+
+        function cambioImagen() {
+            let imagen = document.getElementById("imagen")
+            imagen.src = "img1.jpg"
+        }
+
+        function diceAlineacion() {
+            alineacion.push("Santillana");
+            alineacion.push("Juanito");
+            alineacion.unshift("Di Stefano");
+            alert("Hay " + alineacion.length + " jugadores");
+            let posicion = prompt("Dime posicion");
+            if (posicion >= alineacion.length) {
+                alert("No hay jugadores ");
+            } else {
+                alert("En la posicion " + posicion + " juega " + alineacion[posicion]);
+            }
+        }
+
+        function imprimeAlineacion() {
+            let display = document.getElementById("display");
+            display.innerHTML = "<ol>";
+
+            for (let i = 0; i < alineacion.length; i++) {
+                display.innerHTML = display.innerHTML + "<li>" + alineacion[i] + "</li>";
+            }
+            display.innerHTML = display.innerHTML + "</ol>";
+            display.style.backgroundColor = "yellow";
+            display.style.width = "30%";
+            document.getElementById("titulo").style.color = "red";
+        }
+
+        function Multiplicar() {
+            let tipoValor = document.getElementById("tipo").value;
+            let display1 = document.getElementById("display1");
+            display1.innerHTML = "<ul>";
+
+            for (let i = 1; i <= 10; i++) {
+                display1.innerHTML += "<li>" + tipoValor + " x " + i + " = " + tipoValor * i + "</li>";
+            }
+
+            display1.innerHTML += "</ul>";
+        }
+
+    </script>
+</body>
+</html>
