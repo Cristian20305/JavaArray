@@ -14,6 +14,9 @@
             overflow: auto;
             padding: 10px;
         }
+        #imagen{
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -28,6 +31,18 @@
     Tipo <input type="number" id="tipo" value="8" max="10" min="0">
     <button onclick="Multiplicar()">Hacer</button>
     <div id="display1"></div>
+    <h1>Equipos de Futbol</h1>
+    <label for="equipo">Equipo</label>
+    <select onchange="cambiaEquipo()" name="" id="equipo">
+
+        <option value="ninguno">Elija Equipo</option>
+        <option value="rm">Real Madird</option>
+        <option value="bar">Barcelona</option>
+        
+    </select>
+        <img src="" alt="" id="imagen2">
+        <h1 id="titulo2"></h1>
+        <div id="display3"></div>
 
     <script>
 
@@ -75,6 +90,42 @@
 
             display1.innerHTML += "</ul>";
         }
+       
+        function cambiaEquipo(){
+                let equipoObj = document.getElementById("equipo")
+                let equipoValor = equipoObj.value
+                cambiaImagen(equipoValor)
+        }        
+        function cambiaImagen(equipo){
+            let imagen = document.getElementById("imagen2")
+            let titulo2 = document.getElementById("titulo2")
+            realmadrid= ["Bale", "Ronaldo", "Cristiano","Butragueño"]
+            barcelona= ["Ter", "Andres","Pedro","Messi","Iniesta"]
+
+            if (equipo =="rm"){
+                imagen.src="realmadrid.png"
+                titulo2.innerHTML="Alineacion del Real Madrid"
+                imagen.style.display="block"
+            }
+            if (equipo == "bar"){
+                imagen.src="barcelona.png"
+                titulo2.innerHTML="Alineacion del Barcelona"
+                imagen.style.display="block"
+
+            }if (equipo == "ninguno"){
+                imagen.src="barcelona.png"
+                titulo2.innerHTML=""
+                imagen.style.display="none"
+
+            }
+            function ImprimirAlineacion(alineacion){
+                display3 =document.getElementById("display3")
+                for (let i=0;i<alineacion.length;i++){
+                    display.innerHTML+=alineacion[i]+"<br>"
+                }
+            }
+        }
+
 
     </script>
 </body>
